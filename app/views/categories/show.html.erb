@@ -1,0 +1,145 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<% @category.blogs.each do |x|%>
+	<%= x.title %><br>
+	<%= x.description %><br>
+	<%= x.author %><br>
+<% end %>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
+
+
+
+   <div class="mainbox">
+     <div class="fix">
+       <div class="abso first" data-scroll-speed="2">
+       <h2 class="text-colorb"><%= @category.blogs.last.title %></h2>
+       <p style="font-size: 10px"><i>-<%= @category.blogs.last.author %> </i><%= @category.blogs.last.created_at.strftime("%b %d, %Y") %></p>
+       <div class="spacer"></div>
+       <p><%= @category.blogs.last.description %></p>
+         <div class="spacer"></div>
+         <div class="bottom-border">
+         <div class="com-btn right">
+           <a class="waves-effect waves-teal btn-flat">Like</a><a class="waves-effect waves-teal btn-flat ">Comment</a>
+         </div>
+         </div>
+
+         <div class="spacer"></div>
+         <div class="comments">
+           <h3 class="text-colorb">User name</h3>
+           <p style="font-size: 10px" >(dd/mm/yy)</p>
+           <div class="comment-box ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+
+         </div>
+
+         <div class="spacer"></div>
+         <div class="comments">
+           <h3 class="text-colorb">User name</h3>
+           <p style="font-size: 10px" >(dd/mm/yy)</p>
+           <div class="comment-box ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+
+         </div>
+                
+                  <div class="spacer"></div>
+                   <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">email</i>
+          <input id="icon_telephone" type="tel" class="validate">
+          <label for="icon_telephone">E-mail</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+         <i class="material-icons prefix">textsms</i>
+          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1">Comment</label>
+        </div>
+      </div>
+        <button class="btn waves-effect waves-light " type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button> 
+    </form>
+  </div>
+
+       </div>
+
+
+
+
+       <div class="abso sec" data-scroll-speed="6">
+       <h2 class="text-colorb">Search your topics</h2><hr class="grid-header"></br>
+       
+        <ul class="list-items " >
+                <li><a href="">What we do ?</a></li><hr class="hr-list"></br>
+                <li><a href="">What we know ?</a></li><hr class="hr-list"><br>
+                <li><a href="">How we can help you ?</a></li><hr class="hr-list"></br>
+                <li><a href="">Our skills</a></li><hr class="hr-list"></br>
+                <li><a href="">Our passion</a></li><hr class="hr-list"></br>
+                <li><a href="">What we do ?</a></li><hr class="hr-list"></br>
+                <li><a href="">What we know ?</a></li><hr class="hr-list"><br>
+                <li><a href="">How we can help you ?</a></li><hr class="hr-list"></br>
+                <li><a href="">Our skills</a></li><hr class="hr-list"></br>
+                <li><a href="">Our passion</a></li><hr class="hr-list"></br>
+                <li><a href="">What we do ?</a></li><hr class="hr-list"></br>
+                <li><a href="">What we know ?</a></li><hr class="hr-list"><br>
+                <li><a href="">How we can help you ?</a></li><hr class="hr-list"></br>
+                <li><a href="">Our skills</a></li><hr class="hr-list"></br>
+                <li><a href="">Our passion</a></li><hr class="hr-list"></br>
+                <li><a href="">What we do ?</a></li><hr class="hr-list"></br>
+                <li><a href="">What we know ?</a></li><hr class="hr-list"><br>
+                <li><a href="">How we can help you ?</a></li><hr class="hr-list"></br>
+                <li><a href="">Our skills</a></li><hr class="hr-list"></br>
+                <li><a href="">Our passion</a></li><hr class="hr-list"></br>
+                  </ul>
+      
+
+       </div>
+
+     </div>
+
+   </div>
+<script>
+ $.fn.moveIt = function(){
+  var $window = $(window);
+  var instances = [];
+  
+  $(this).each(function(){
+    instances.push(new moveItItem($(this)));
+  });
+  
+  window.onscroll = function(){
+    var scrollTop = $window.scrollTop();
+    instances.forEach(function(inst){
+      inst.update(scrollTop);
+    });
+  }
+}
+
+var moveItItem = function(el){
+  this.el = $(el);
+  this.speed = parseInt(this.el.attr('data-scroll-speed'));
+};
+
+moveItItem.prototype.update = function(scrollTop){
+  var pos = scrollTop / this.speed;
+  this.el.css('transform', 'translateY(' + -pos + 'px)');
+};
+
+$(function(){
+  $('[data-scroll-speed]').moveIt();
+});
+
+</script>
